@@ -1,8 +1,16 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 function App() {
   return (
-    <>
-      <h1 className="flex justify-center font-mono text-3xl">Cyber</h1>
-    </>
+    <BrowserRouter>
+      <Header />
+
+      <Routes></Routes>
+
+      <Footer />
+    </BrowserRouter>
   );
 }
 
