@@ -17,7 +17,7 @@ function Header() {
           <img src="/src/assets/Logo.png" alt="Logo" />
         </Link>
         <div
-          className={`absolute left-0 top-[88px] w-full flex-col items-center justify-between gap-9 lg:flex-row lg:gap-7 ${isOpen ? 'flex' : 'hidden'} bg-white pt-0 lg:static lg:flex lg:px-0 lg:py-0`}
+          className={`absolute left-0 top-[88px] z-10 w-full flex-col items-center justify-between gap-9 lg:flex-row lg:gap-7 ${isOpen ? 'flex' : 'hidden'} bg-white pt-0 lg:static lg:flex lg:px-0 lg:py-0`}
         >
           <SearchForm />
           <Navbar />

@@ -5,13 +5,11 @@ import Home from './routes/Home';
 import About from './routes/About';
 import ContactUs from './routes/ContactUs';
 import Blog from './routes/Blog';
-// import CategoryNav from './components/CategoryNav';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      {/* <CategoryNav /> */}
 
       <Routes>
         <Route path="/" Component={Home} />

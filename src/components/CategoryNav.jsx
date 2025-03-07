@@ -12,7 +12,7 @@ function CategoryNav({ isOpen }) {
 
   return (
     <div
-      className={`bg-charcoal w-full ${isOpen ? 'block' : 'hidden'} lg:block`}
+      className={`w-full bg-charcoal ${isOpen ? 'block' : 'hidden'} lg:block`}
     >
       <ul className="flex flex-wrap justify-between gap-4 px-4 py-2 lg:container sm:flex-row md:justify-between lg:mx-auto lg:max-w-screen-xl">
         {categories.map((category, index) => (
