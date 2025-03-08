@@ -1,6 +1,7 @@
 import BannerDevices from '../components/BannerDevices';
 import Categories from '../components/Categories';
 import HomeHero from '../components/HomeHero';
+import HomeProducts from '../components/HomeProducts';
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
       <HomeHero />
       <BannerDevices />
       <Categories />
+      <HomeProducts />
     </main>
   );
 }
