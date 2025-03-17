@@ -2,17 +2,27 @@ import { Link } from 'react-router-dom';
 
 function Categories() {
   const devicesCategory = [
-    { id: 1, name: 'Phones', icon: 'Phones.png', link: '/phones' },
+    { id: 1, name: 'Phones', icon: 'Phones.png', link: '/catalog/smartphones' },
     {
       id: 2,
       name: 'Smart Watches',
       icon: 'Smart Watches.png',
-      link: '/smart-watches',
+      link: '/catalog/smart-watches',
     },
-    { id: 3, name: 'Cameras', icon: 'Cameras.png', link: '/cameras' },
-    { id: 4, name: 'Headphones', icon: 'Headphones.png', link: '/headphones' },
-    { id: 5, name: 'Computers', icon: 'Computers.png', link: '/computers' },
-    { id: 6, name: 'Gaming', icon: 'Gaming.png', link: '/gaming' },
+    { id: 3, name: 'Cameras', icon: 'Cameras.png', link: '/catalog/cameras' },
+    {
+      id: 4,
+      name: 'Headphones',
+      icon: 'Headphones.png',
+      link: '/catalog/headphones',
+    },
+    {
+      id: 5,
+      name: 'Computers',
+      icon: 'Computers.png',
+      link: '/catalog/computers',
+    },
+    { id: 6, name: 'Gaming', icon: 'Gaming.png', link: '/catalog/gaming' },
   ];
 
   return (
