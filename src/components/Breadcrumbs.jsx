@@ -5,13 +5,17 @@ const Breadcrumbs = () => {
   const pathnames = location.pathname.split('/').filter((x) => x);
 
   return (
-    <nav className="container mx-auto hidden max-w-screen-xl py-10 lg:inline-block">
+    <nav className="container mx-auto hidden max-w-screen-xl justify-start px-4 py-10 lg:flex">
       <ol className="flex gap-4">
+        <li className="font-sfPro text-base font-medium leading-6 text-[#A4A4A4] hover:text-black">
+          <Link to="/">Home</Link>
+        </li>
         {pathnames.map((value, index) => {
           const pathTo = `/${pathnames.slice(0, index + 1).join('/')}`;
           const isLast = index === pathnames.length - 1;
-          const toUpperCaseValue =
-            value.charAt(0).toUpperCase() + value.slice(1);
+          const decodedValue = decodeURIComponent(value);
+          const routeValue =
+            decodedValue.charAt(0).toUpperCase() + decodedValue.slice(1);
 
           return (
             <li key={index} className="flex items-center gap-4">
@@ -27,14 +31,14 @@ const Breadcrumbs = () => {
 
               {isLast ? (
                 <span className="font-sfPro text-base font-medium leading-6 text-black">
-                  {toUpperCaseValue}
+                  {routeValue}
                 </span>
               ) : (
                 <Link
                   to={pathTo}
                   className="font-sfPro text-base font-medium leading-6 text-[#A4A4A4] hover:text-black"
                 >
-                  {toUpperCaseValue}
+                  {routeValue}
                 </Link>
               )}
             </li>

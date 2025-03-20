@@ -1,30 +1,62 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Filters from '../components/Filters';
 import ProductCard from '../components/ProductCard';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { database } from '../config/firebase';
+import { useParams } from 'react-router-dom';
 
 function Catalog() {
+  const { category } = useParams();
+  const [devices, setDevices] = useState([]);
   const [openSideFilters, setOpenSideFilters] = useState(false);
 
+  useEffect(() => {
+    const fetchDevices = async () => {
+      try {
+        let devicesQuery;
+        if (category) {
+          devicesQuery = query(
+            collection(database, 'devices'),
+            where('category', '==', category)
+          );
+        } else {
+          devicesQuery = query(collection(database, 'devices'));
+        }
+        const querySnapshot = await getDocs(devicesQuery);
+        const deviceList = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setDevices(deviceList);
+      } catch (error) {
+        console.error('Error fetching devices', error);
+      }
+    };
+
+    fetchDevices();
+  }, [category]);
+
   return (
-    <section className="container mx-auto w-full max-w-screen-xl px-4 pb-20">
+    <main className="container mx-auto w-full max-w-screen-xl px-4 pb-20">
       <Breadcrumbs />
       <div className="flex gap-8">
-        <Filters openSideFilters={openSideFilters} />
+        <Filters
+          openSideFilters={openSideFilters}
+          setOpenSideFilters={setOpenSideFilters}
+        />
 
-        <div className="flex flex-col gap-6">
+        <div className="flex w-full flex-col gap-6">
           <div className="flex flex-col justify-between gap-6 lg:flex-row">
             <h4 className="order-3 font-sfPro text-base font-medium text-[#6C6C6C] lg:order-1">
               Selected Products: <span className="text-xl text-black">85</span>
             </h4>
             <div className="flex justify-center gap-4 lg:order-2">
-              <div
-                onClick={() => setOpenSideFilters(!openSideFilters)}
-                className="flex w-full max-w-64 justify-between rounded-lg border border-[#D4D4D4] px-4 py-2 lg:hidden lg:w-64"
+              <button
+                onClick={() => setOpenSideFilters(true)}
+                className="flex w-full max-w-64 justify-between rounded-lg border border-[#D4D4D4] px-4 py-2 font-sfPro text-sm font-medium leading-6 text-black lg:hidden lg:w-64"
               >
-                <p className="font-sfPro text-sm font-medium leading-6 text-black">
-                  Filters
-                </p>
+                Filters
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -38,9 +70,7 @@ function Catalog() {
                     strokeLinecap="round"
                   />
                 </svg>
-
-                {openSideFilters && <Filters />}
-              </div>
+              </button>
               <div className="flex w-full max-w-64 justify-between rounded-lg border border-[#D4D4D4] px-4 py-2 lg:w-64">
                 <p className="font-sfPro text-sm font-medium leading-6 text-black">
                   By rating
@@ -58,19 +88,13 @@ function Catalog() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {devices.map((device) => (
+              <ProductCard key={device.id} device={device} />
+            ))}
           </div>
         </div>
       </div>
-    </section>
+    </main>
   );
 }
 

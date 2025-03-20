@@ -1,6 +1,8 @@
-function ProductCard() {
+import { Link } from 'react-router-dom';
+
+function ProductCard(props) {
   return (
-    <div className="flex flex-col gap-2 rounded-lg bg-[#F6F6F6] px-4 py-6 md:gap-4">
+    <div className="flex flex-col justify-start gap-2 rounded-lg bg-[#F6F6F6] px-4 py-6 md:gap-4">
       <svg
         className="cursor-pointer self-end hover:fill-[#FF0000]"
         xmlns="http://www.w3.org/2000/svg"
@@ -16,18 +18,21 @@ function ProductCard() {
           strokeWidth="1.4"
         />
       </svg>
-      <div className="flex flex-col items-center gap-4">
+      <Link
+        to={`/catalog/${props.device?.category}/${props.device?.name}`}
+        className="flex flex-auto flex-col items-center justify-between gap-4"
+      >
         <img src="/src/assets/Iphone 14 pro 1.png" alt="" />
         <h4 className="line-clamp-2 text-center font-sfPro text-base font-medium leading-6 text-black sm:text-lg">
-          Apple iPhone 14 Pro Max 128GB Deep Purple (MQ9T3RX/A)
+          {props.device?.name}
         </h4>
         <p className="font-sfPro text-2xl font-semibold leading-6 tracking-[0.72px]">
-          $900
+          ${props.device?.price}
         </p>
-        <button className="w-full rounded-lg bg-black py-4 font-sfPro text-sm font-medium leading-6 text-white hover:bg-[#353535]">
-          Buy Now
-        </button>
-      </div>
+      </Link>
+      <button className="w-full rounded-lg bg-black py-4 font-sfPro text-sm font-medium leading-6 text-white hover:bg-[#353535]">
+        Buy Now
+      </button>
     </div>
   );
 }

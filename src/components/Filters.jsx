@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Filters({ openSideFilters }) {
+function Filters({ openSideFilters, setOpenSideFilters }) {
   const filters = [
     { filterName: 'Price' },
     {
@@ -50,8 +50,26 @@ function Filters({ openSideFilters }) {
 
   return (
     <aside
-      className={`w-96 flex-col gap-6 lg:flex ${openSideFilters ? 'flex' : 'hidden'}`}
+      className={`flex flex-col ${openSideFilters ? 'w-full opacity-100 md:w-1/2' : 'w-0 opacity-0'} absolute left-0 top-20 z-10 gap-6 bg-white p-4 duration-300 lg:static lg:w-80 lg:p-0 lg:opacity-100`}
     >
+      <button
+        className="flex items-center gap-4 lg:hidden"
+        onClick={() => setOpenSideFilters(false)}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M16.0001 20.7498C15.801 20.7508 15.61 20.6715 15.4701 20.5298L7.47007 12.5298C7.17762 12.237 7.17762 11.7627 7.47007 11.4698L15.4701 3.46985C15.7656 3.19449 16.2261 3.20261 16.5117 3.48823C16.7973 3.77384 16.8054 4.23434 16.5301 4.52985L9.06007 11.9998L16.5301 19.4698C16.8225 19.7627 16.8225 20.237 16.5301 20.5298C16.3902 20.6715 16.1991 20.7508 16.0001 20.7498Z"
+            fill="black"
+          />
+        </svg>
+        <h4 className="font-sfPro text-2xl font-medium leading-8">Filters</h4>
+      </button>
       {filters.map((filter, index) => (
         <div key={index} className="flex flex-col gap-3">
           <div
@@ -120,6 +138,9 @@ function Filters({ openSideFilters }) {
           )}
         </div>
       ))}
+      <button className="font-sm w-full self-center rounded-lg border border-black bg-black py-3 font-sfPro font-medium text-white sm:max-w-96 lg:hidden">
+        Apply
+      </button>
     </aside>
   );
 }
