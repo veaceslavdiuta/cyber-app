@@ -6,7 +6,6 @@ import About from './routes/About';
 import ContactUs from './routes/ContactUs';
 import Blog from './routes/Blog';
 import Catalog from './routes/Catalog';
-import Category from './routes/Category';
 import ProductDetails from './routes/ProductDetails';
 // import './config/uploadDevices';
 

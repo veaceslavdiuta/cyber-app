@@ -6,6 +6,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import DeviceMainInfo from '../components/DeviceMainInfo';
 import DeviceReviews from '../components/DeviceReviews';
 import DeviceDetails from '../components/DeviceDetails';
+import ProductCard from '../components/ProductCard';
 
 function ProductDetails() {
   const [device, setDevice] = useState(null);
@@ -16,7 +17,7 @@ function ProductDetails() {
       try {
         const deviceCollection = query(
           collection(database, 'devices'),
-          where('name', '==', name) // Query by name
+          where('name', '==', name)
         );
         const deviceQuery = await getDocs(deviceCollection);
         const deviceData = deviceQuery.docs.map((doc) => ({
@@ -27,7 +28,6 @@ function ProductDetails() {
         if (deviceData.length > 0) {
           setDevice(deviceData[0]);
           console.log(deviceData);
-          // Assuming one device matches the name
         } else {
           console.log('No device found with the given name');
         }
@@ -47,8 +47,16 @@ function ProductDetails() {
         <>
           <DeviceMainInfo device={device} />
           <DeviceDetails />
-          <DeviceReviews />
-          <div className="bg-blue-300">Related Products</div>
+          {/* <DeviceReviews /> */}
+          <div className="container mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-20">
+            <h4>Related Products</h4>
+            <div className="flex justify-between">
+              <ProductCard device={device} />
+              <ProductCard device={device} />
+              <ProductCard device={device} />
+              <ProductCard device={device} />
+            </div>
+          </div>
         </>
       )}
     </main>
