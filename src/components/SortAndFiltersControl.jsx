@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 function SortAndFiltersControl({ setOpenSideFilters }) {
+  const [openSort, setOpenSort] = useState(false);
+
   return (
     <div className="flex flex-col justify-between gap-6 lg:flex-row">
       <h4 className="order-3 font-sfPro text-base font-medium text-[#6C6C6C] lg:order-1">
@@ -24,20 +28,33 @@ function SortAndFiltersControl({ setOpenSideFilters }) {
             />
           </svg>
         </button>
-        <div className="flex w-full max-w-64 justify-between rounded-lg border border-[#D4D4D4] px-4 py-2 lg:w-64">
-          <p className="font-sfPro text-sm font-medium leading-6 text-black">
-            Sort by
-          </p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
+        <ul className="flex w-full max-w-64 flex-col justify-between rounded-lg border border-[#D4D4D4] bg-white px-4 py-2 lg:w-64">
+          <button
+            onClick={() => setOpenSort(!openSort)}
+            className="flex w-full justify-between font-sfPro text-sm font-medium leading-6 text-black"
           >
-            <path d="M6 9L12 15L18 9" stroke="#9F9F9F" />
-          </svg>
-        </div>
+            Sort by
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path d="M6 9L12 15L18 9" stroke="#9F9F9F" />
+            </svg>
+          </button>
+          {openSort && (
+            <>
+              <li className="font-sfPro text-sm font-medium leading-6 text-black hover:bg-[#D4D4D4]">
+                Price: Low to High
+              </li>
+              <li className="font-sfPro text-sm font-medium leading-6 text-black hover:bg-[#D4D4D4]">
+                Price: High to Low
+              </li>
+            </>
+          )}
+        </ul>
       </div>
     </div>
   );

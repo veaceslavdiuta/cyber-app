@@ -7,6 +7,9 @@ import ContactUs from './routes/ContactUs';
 import Blog from './routes/Blog';
 import Catalog from './routes/Catalog';
 import ProductDetails from './routes/ProductDetails';
+import Cart from './routes/Cart';
+import Favorite from './routes/Favorite';
+import MyAccount from './routes/MyAccount';
 // import './config/uploadDevices';
 
 const App = () => {
@@ -23,6 +26,9 @@ const App = () => {
           <Route path=":category" Component={Catalog} />
         </Route>
         <Route path="/catalog/:category/:name" Component={ProductDetails} />
+        <Route path="/favorite" Component={Favorite} />
+        <Route path="/cart" Component={Cart} />
+        <Route path="/my-account" Component={MyAccount} />
       </Routes>
 
       <Footer />

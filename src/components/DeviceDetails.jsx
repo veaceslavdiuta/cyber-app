@@ -4,7 +4,7 @@ function DeviceDetails() {
   const [viewMore, setViewMore] = useState(false);
 
   return (
-    <section className="w-full bg-[#FAFAFA] py-20">
+    <section className="w-full bg-[#FAFAFA] py-10 lg:py-20">
       <div className="container mx-auto flex max-w-screen-xl flex-col gap-8 bg-[white] px-10 py-12">
         <h4 className="font-sfPro text-2xl font-medium leading-8">Details</h4>
         <p className="font-sfPro text-sm font-medium leading-6 text-[#9D9D9D]">
@@ -40,13 +40,13 @@ function DeviceDetails() {
             Peak Brightness <span>2000 nits</span>
           </li>
           <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
-            Contrast Ratio <span>2,000,000:1</span>
+            Contrast Ratio <span>2,000,000</span>
           </li>
           <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
             Touch Sampling Rate <span>240 Hz</span>
           </li>
           <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
-            HDR Support <span>HDR10, Dolby Vision</span>
+            HDR Support <span>HDR10</span>
           </li>
           <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
             Glass Protection <span>Ceramic Shield Glass</span>
@@ -63,7 +63,7 @@ function DeviceDetails() {
           </li>
           <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
             Number of cores
-            <span>Hexa-core (2x performance & 4x efficiency cores)</span>
+            <span>Hexa-core</span>
           </li>
           <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
             GPU <span>Apple GPU (6-core)</span>
@@ -84,18 +84,18 @@ function DeviceDetails() {
             Cameras
             <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
               Rear Camera - Main
-              <span>48 MP, f/1.8, Sensor-shift OIS, Dual-Pixel PDAF</span>
+              <span>48 MP</span>
             </li>
             <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
               Rear Camera - Ultra-wide
-              <span>12 MP, f/2.2, 120° field of view</span>
+              <span>12 MP</span>
             </li>
             <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
               Rear Camera - Telephoto
-              <span>12 MP, f/2.8, 5x optical zoom, OIS</span>
+              <span>12 MP, 5x optical zoom</span>
             </li>
             <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
-              Front Camera <span>12 MP, f/1.9, Autofocus, HDR</span>
+              Front Camera <span>12 MP, Autofocus, HDR</span>
             </li>
           </ul>
 
@@ -105,10 +105,10 @@ function DeviceDetails() {
               Capacity <span>4441mAh</span>
             </li>
             <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
-              Charging <span>20W wired, 15W MagSafe wireless</span>
+              Charging <span>20W wired</span>
             </li>
             <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
-              Battery Life <span>Up to 29 hours video playback</span>
+              Battery Life <span>29 hours</span>
             </li>
           </ul>
 
@@ -140,14 +140,14 @@ function DeviceDetails() {
               OS <span>iOS 17</span>
             </li>
             <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
-              Updates <span>Guaranteed software updates for 5+ years</span>
+              Updates <span>updates for 5+ years</span>
             </li>
           </ul>
 
           <ul className="flex flex-col gap-4 font-sfPro text-xl font-medium leading-6">
             Build
             <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
-              Material <span>Titanium frame, Ceramic Shield front & back</span>
+              Material <span>Titanium frame, Ceramic Shield</span>
             </li>
             <li className="flex justify-between border-b-[0.5px] border-[#CDCDCD] pb-2 text-base">
               Water Resistance <span>IP68 (6m for 30 min)</span>
