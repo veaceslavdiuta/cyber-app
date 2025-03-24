@@ -1,6 +1,10 @@
+import { useNavigate } from 'react-router-dom';
+
 function CartOrderSummary() {
+  const navigate = useNavigate();
+
   return (
-    <div className="flex w-1/2 flex-col gap-10 rounded-xl border border-[#EBEBEB] px-16 py-14">
+    <div className="flex flex-col gap-10 rounded-xl border border-[#EBEBEB] px-4 py-14 sm:px-16 lg:w-1/2">
       <h4 className="font-sfPro text-xl font-semibold leading-4">
         Oder Summary
       </h4>
@@ -49,7 +53,10 @@ function CartOrderSummary() {
           Total <span>$2426</span>
         </li>
       </ul>
-      <button className="rounded-md border bg-black py-4 font-sfPro text-base font-medium leading-6 text-white">
+      <button
+        onClick={() => navigate('/checkout/step-1')}
+        className="rounded-md border bg-black py-4 font-sfPro text-base font-medium leading-6 text-white"
+      >
         Checkout
       </button>
     </div>

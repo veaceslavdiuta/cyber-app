@@ -10,6 +10,9 @@ import ProductDetails from './routes/ProductDetails';
 import Cart from './routes/Cart';
 import Favorite from './routes/Favorite';
 import MyAccount from './routes/MyAccount';
+import CheckoutFirstStep from './routes/CheckoutFirstStep';
+import CheckoutSecondStep from './routes/CheckoutSecondStep';
+import CheckoutThirdStep from './routes/CheckoutThirdStep';
 // import './config/uploadDevices';
 
 const App = () => {
@@ -29,6 +32,9 @@ const App = () => {
         <Route path="/favorite" Component={Favorite} />
         <Route path="/cart" Component={Cart} />
         <Route path="/my-account" Component={MyAccount} />
+        <Route path="/checkout/step-1" Component={CheckoutFirstStep} />
+        <Route path="/checkout/step-2" Component={CheckoutSecondStep} />
+        <Route path="/checkout/step-3" Component={CheckoutThirdStep} />
       </Routes>
 
       <Footer />

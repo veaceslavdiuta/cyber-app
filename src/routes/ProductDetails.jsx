@@ -49,7 +49,9 @@ function ProductDetails() {
           <DeviceDetails />
           {/* <DeviceReviews /> */}
           <div className="container mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-20">
-            <h4>Related Products</h4>
+            <h4 className="font-sfPro text-2xl font-medium leading-8">
+              Related Products
+            </h4>
             <div className="flex flex-wrap justify-between gap-4">
               <ProductCard device={device} />
               <ProductCard device={device} />
