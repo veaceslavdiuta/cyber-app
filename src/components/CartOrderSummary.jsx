@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Summary from './Summary';
 
 function CartOrderSummary() {
   const navigate = useNavigate();
@@ -14,11 +15,12 @@ function CartOrderSummary() {
             htmlFor="discountCode"
             className="font-sfPro text-sm font-medium leading-4 text-[#545454]"
           >
-            Discout code / Promo code
+            Discount code / Promo code
           </label>
           <input
             type="text"
-            name="dicountCode"
+            name="discountCode"
+            id="discountCode"
             placeholder="Code"
             className="borde-[#9F9F9F] rounded-md border-[0.5px] p-4 font-sfPro text-sm font-medium leading-6 text-[#979797] outline-none"
           />
@@ -33,26 +35,15 @@ function CartOrderSummary() {
           <input
             type="text"
             name="bonus"
+            id="bonus"
             placeholder="Enter Card Number"
             className="borde-[#9F9F9F] rounded-md border-[0.5px] p-4 font-sfPro text-sm font-medium leading-6 text-[#979797] outline-none"
           />
         </div>
       </div>
-      <ul className="flex flex-col gap-4">
-        <li className="flex justify-between font-sfPro text-base font-semibold leading-6">
-          Subtotal <span>$2347</span>
-        </li>
-        <li className="flex justify-between font-sfPro text-base font-medium leading-6 text-[#545454]">
-          Estimated Tax <span className="font-semibold text-black">$50</span>
-        </li>
-        <li className="flex justify-between font-sfPro text-base font-medium leading-6 text-[#545454]">
-          Estimated shipping & Handling
-          <span className="font-semibold text-black">$29</span>
-        </li>
-        <li className="flex justify-between font-sfPro text-base font-semibold leading-6">
-          Total <span>$2426</span>
-        </li>
-      </ul>
+
+      <Summary />
+
       <button
         onClick={() => navigate('/checkout/step-1')}
         className="rounded-md border bg-black py-4 font-sfPro text-base font-medium leading-6 text-white"

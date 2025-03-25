@@ -1,8 +1,16 @@
+import { useLocation } from 'react-router-dom';
+
 function StepsSection() {
+  const location = useLocation();
+  const pathStep = location.pathname;
+
   return (
     <section className="container mx-auto flex max-w-screen-xl items-center justify-between px-4 py-[72px]">
-      <div className="flex items-center gap-2">
+      <div
+        className={`items-center gap-2 sm:flex ${pathStep == '/checkout/step-1' ? 'flex' : 'hidden'}`}
+      >
         <svg
+          className={`${pathStep == '/checkout/step-1' ? 'opacity-100' : 'opacity-20'}`}
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -15,14 +23,18 @@ function StepsSection() {
             fill="white"
           />
         </svg>
-        <h4 className="flex flex-col font-sfPro text-sm font-medium leading-4">
+        <h4
+          className={`flex flex-col font-sfPro text-sm font-medium leading-4 ${pathStep == '/checkout/step-1' ? 'opacity-100' : 'opacity-20'}`}
+        >
           Step 1 <span className="text-xl">Address</span>
         </h4>
       </div>
-      <span className="w-1/4 border-t border-dashed border-black"></span>
+      <span
+        className={`w-1/4 border-t border-dashed border-black sm:inline-block ${pathStep == '/checkout/step-3' || pathStep == '/checkout/step-2' ? 'hidden' : 'inline-block'}`}
+      ></span>
       <div className="flex items-center gap-2">
         <svg
-          className="opacity-20"
+          className={`${pathStep == '/checkout/step-2' ? 'opacity-100' : 'opacity-20'}`}
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -35,14 +47,20 @@ function StepsSection() {
             fill="white"
           />
         </svg>
-        <h4 className="flex flex-col font-sfPro text-sm font-medium leading-4 opacity-20">
+        <h4
+          className={`flex flex-col font-sfPro text-sm font-medium leading-4 ${pathStep == '/checkout/step-2' ? 'opacity-100' : 'opacity-20'}`}
+        >
           Step 2 <span className="text-xl">Shipping</span>
         </h4>
       </div>
-      <span className="w-1/4 border-t border-dashed border-black opacity-20"></span>
-      <div className="flex items-center gap-2">
+      <span
+        className={`w-1/4 border-t border-dashed border-black sm:inline-block ${pathStep == '/checkout/step-1' ? 'hidden' : 'inline-block'}`}
+      ></span>
+      <div
+        className={`items-center gap-2 sm:flex ${pathStep == '/checkout/step-3' || pathStep == '/checkout/step-2' ? 'flex' : 'hidden'}`}
+      >
         <svg
-          className="flex h-6 w-6 items-center justify-center rounded-full bg-black p-1 opacity-20"
+          className={`flex h-6 w-6 items-center justify-center rounded-full bg-black p-1 ${pathStep == '/checkout/step-3' ? 'opacity-100' : 'opacity-20'}`}
           xmlns="http://www.w3.org/2000/svg"
           width="12"
           height="18"
@@ -54,7 +72,9 @@ function StepsSection() {
             fill="white"
           />
         </svg>
-        <h4 className="flex flex-col font-sfPro text-sm font-medium leading-4 opacity-20">
+        <h4
+          className={`flex flex-col font-sfPro text-sm font-medium leading-4 ${pathStep == '/checkout/step-3' ? 'opacity-100' : 'opacity-20'}`}
+        >
           Step 3 <span className="text-xl">Payment</span>
         </h4>
       </div>
