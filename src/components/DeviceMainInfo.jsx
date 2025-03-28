@@ -1,23 +1,48 @@
+import DeviceImages from './DeviceImages';
+import ServiceInfo from './ServiceInfo';
+
 function DeviceMainInfo(props) {
+  const mainFeatures = [
+    {
+      name: 'Screen size',
+      featureProperty: props.device.screen['Screen-diagonal'],
+      icon: 'Detail1.png',
+    },
+    {
+      name: 'CPU',
+      featureProperty: props.device.CPU['Chipset'],
+      icon: 'Detail2.png',
+    },
+    {
+      name: 'Number of Cores',
+      featureProperty: props.device.CPU['Number of cores'],
+      icon: 'Detail3.png',
+    },
+    {
+      name: 'Main camera',
+      featureProperty: props.device.Cameras['Rear Camera - Main'],
+      icon: 'Detail4.png',
+    },
+    {
+      name: 'Front-camera',
+      featureProperty: props.device.Cameras['Front Camera'],
+      icon: 'Detail5.png',
+    },
+    {
+      name: 'Battery capacity',
+      featureProperty: props.device.Battery['Capacity'],
+      icon: 'Detail6.png',
+    },
+  ];
+
   return (
     <section className="container mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-10 px-4 py-10 lg:flex-row lg:py-28">
-      <div className="flex flex-col items-center gap-12 lg:w-1/2 xl:flex-row">
-        <div className="order-2 flex w-full items-center justify-between gap-10 lg:gap-6 xl:order-1 xl:flex-col">
-          <img src="/src/assets/image 57.png" alt="" />
-          <img src="/src/assets/image 61.png" alt="" />
-          <img src="/src/assets/image 62.png" alt="" />
-          <img src="/src/assets/image 63.png" alt="" />
-        </div>
-        <img
-          className="w-2/3 lg:w-auto xl:order-2"
-          src="/src/assets/Image.png"
-          alt=""
-        />
-      </div>
+      <DeviceImages />
+
       <div className="flex flex-col gap-4 lg:w-1/2">
         <div className="flex flex-col gap-6">
           <h2 className="font-sfPro text-[40px] font-semibold leading-10">
-            {props.device.name}
+            {props.device.model}
           </h2>
           <p className="font-sfPro text-[32px] font-medium leading-normal">
             ${props.device.price}
@@ -37,61 +62,30 @@ function DeviceMainInfo(props) {
             </div>
           </div>
           <div className="flex gap-2 sm:gap-4">
-            <button className="rounded-lg border border-[#D5D5D5] px-4 py-4 font-sfPro text-sm font-medium hover:border-black sm:px-6">
-              128GB
-            </button>
-            <button className="rounded-lg border border-[#D5D5D5] px-4 py-4 font-sfPro text-sm font-medium hover:border-black sm:px-6">
-              256GB
-            </button>
-            <button className="rounded-lg border border-[#D5D5D5] px-4 py-4 font-sfPro text-sm font-medium hover:border-black sm:px-6">
-              512GB
-            </button>
-            <button className="rounded-lg border border-[#D5D5D5] px-4 py-4 font-sfPro text-sm font-medium hover:border-black sm:px-6">
-              1TB
-            </button>
+            {props.device.storage.map((item, index) => (
+              <button
+                key={index}
+                className="rounded-lg border border-[#D5D5D5] px-4 py-4 font-sfPro text-sm font-medium hover:border-black sm:px-6"
+              >
+                {item}
+              </button>
+            ))}
           </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-            <div className="flex items-center gap-2 rounded-lg bg-[#F4F4F4] p-4">
-              <img src="/src/assets/Detail1.png" alt="" />
-              <p className="flex flex-col font-sfPro text-sm font-medium leading-4 text-[#A7A7A7]">
-                Screen size <span className="text-[#4E4E4E]">6.7"</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-2 rounded-lg bg-[#F4F4F4] p-4">
-              <img src="/src/assets/Detail2.png" alt="" />
-              <p className="flex flex-col font-sfPro text-sm font-medium leading-4 text-[#A7A7A7]">
-                CPU
-                <span className="text-[#4E4E4E]">Apple A16 Bionic</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-2 rounded-lg bg-[#F4F4F4] p-4">
-              <img src="/src/assets/Detail3.png" alt="" />
-              <p className="flex flex-col font-sfPro text-sm font-medium leading-4 text-[#A7A7A7]">
-                Number of Cores
-                <span className="text-[#4E4E4E]">6</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-2 rounded-lg bg-[#F4F4F4] p-4">
-              <img src="/src/assets/Detail4.png" alt="" />
-              <p className="flex flex-col font-sfPro text-sm font-medium leading-4 text-[#A7A7A7]">
-                Main camera
-                <span className="text-[#4E4E4E]">48-12-12 MP</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-2 rounded-lg bg-[#F4F4F4] p-4">
-              <img src="/src/assets/Detail5.png" alt="" />
-              <p className="flex flex-col font-sfPro text-sm font-medium leading-4 text-[#A7A7A7]">
-                Front-camera
-                <span className="text-[#4E4E4E]">12 MP</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-2 rounded-lg bg-[#F4F4F4] p-4">
-              <img src="/src/assets/Detail6.png" alt="" />
-              <p className="flex flex-col font-sfPro text-sm font-medium leading-4 text-[#A7A7A7]">
-                Battery capacity
-                <span className="text-[#4E4E4E]">4323 mAh</span>
-              </p>
-            </div>
+            {mainFeatures.map((feature) => (
+              <div
+                key={feature.name}
+                className="flex items-center gap-2 rounded-lg bg-[#F4F4F4] p-4"
+              >
+                <img src={`/src/assets/${feature.icon}`} alt={feature.name} />
+                <p className="flex flex-col font-sfPro text-sm font-medium leading-4 text-[#A7A7A7]">
+                  {feature.name}
+                  <span className="text-[#4E4E4E]">
+                    {feature.featureProperty}
+                  </span>
+                </p>
+              </div>
+            ))}
           </div>
           <p className="font-sfPro text-sm font-normal leading-6 text-[#6C6C6C]">
             Enhanced capabilities thanks toan enlarged display of 6.7 inches and
@@ -108,39 +102,21 @@ function DeviceMainInfo(props) {
           </button>
         </div>
         <div className="flex w-full justify-between gap-8">
-          <div className="flex flex-wrap items-center gap-4">
-            <img
-              className="rounded-xl bg-[#F6F6F6] p-4"
-              src="/src/assets/feature1.png"
-              alt=""
-            />
-            <p className="flex flex-col font-sfPro text-sm font-medium leading-6 text-[#717171]">
-              Free Delivery
-              <span className="font-semibold text-black">1-2 day</span>
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <img
-              className="rounded-xl bg-[#F6F6F6] p-4"
-              src="/src/assets/feature2.png"
-              alt=""
-            />
-            <p className="flex flex-col font-sfPro text-sm font-medium leading-6 text-[#717171]">
-              In Stock
-              <span className="font-semibold text-black">Today</span>
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <img
-              className="rounded-xl bg-[#F6F6F6] p-4"
-              src="/src/assets/feature3.png"
-              alt=""
-            />
-            <p className="flex flex-col font-sfPro text-sm font-medium leading-6 text-[#717171]">
-              Guaranteed
-              <span className="font-semibold text-black">1 year</span>
-            </p>
-          </div>
+          <ServiceInfo
+            icon="/src/assets/feature1.png"
+            title="Free Delivery"
+            highlight="1-2 day"
+          />
+          <ServiceInfo
+            icon="/src/assets/feature2.png"
+            title="In Stock"
+            highlight="Today"
+          />
+          <ServiceInfo
+            icon="/src/assets/feature3.png"
+            title="Guaranteed"
+            highlight="1 year"
+          />
         </div>
       </div>
     </section>

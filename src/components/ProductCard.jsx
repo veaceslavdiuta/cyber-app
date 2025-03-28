@@ -20,12 +20,12 @@ function ProductCard(props) {
         />
       </svg>
       <Link
-        to={`/catalog/${props.device?.category}/${props.device?.name}`}
+        to={`/catalog/${props.device?.category}/${props.device?.model}`}
         className="flex flex-auto flex-col items-center justify-between gap-4"
       >
         <img src="/src/assets/Iphone 14 pro 1.png" alt="" />
         <h4 className="line-clamp-2 text-center font-sfPro text-base font-medium leading-6 text-black sm:text-lg">
-          {props.device?.name}
+          {props.device?.model}
         </h4>
         <p className="font-sfPro text-2xl font-semibold leading-6 tracking-[0.72px]">
           ${props.device?.price}

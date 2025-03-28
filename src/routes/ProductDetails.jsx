@@ -17,7 +17,7 @@ function ProductDetails() {
       try {
         const deviceCollection = query(
           collection(database, 'devices'),
-          where('name', '==', name)
+          where('model', '==', name)
         );
         const deviceQuery = await getDocs(deviceCollection);
         const deviceData = deviceQuery.docs.map((doc) => ({
