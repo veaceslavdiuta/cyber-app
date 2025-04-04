@@ -9,19 +9,15 @@ function Filters({ openSideFilters, setOpenSideFilters }) {
         'Apple',
         'Samsung',
         'Xiaomi',
-        'OPPO',
-        'Paco',
-        'Nokia',
-        'Motorola',
+        'Google',
+        'Huawei',
+        'Poco',
+        'Realme',
       ],
     },
     {
       filterName: 'Built-in memory',
       options: ['16GB', '32GB', '64GB', '128GB', '256GB', '512GB', '1TB'],
-    },
-    {
-      filterName: 'Protection class',
-      options: ['IP67', 'IP68', 'IPX4', 'IPX5', 'IPX6'],
     },
     {
       filterName: 'Screen diagonal',

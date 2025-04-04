@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-function SortAndFiltersControl({ setOpenSideFilters }) {
+function SortAndFiltersControl({ setOpenSideFilters, count }) {
   const [openSort, setOpenSort] = useState(false);
 
   return (
     <div className="flex flex-col justify-between gap-6 lg:flex-row">
       <h4 className="order-3 font-sfPro text-base font-medium text-[#6C6C6C] lg:order-1">
-        Selected Products: <span className="text-xl text-black">85</span>
+        Selected Products: <span className="text-xl text-black">{count}</span>
       </h4>
       <div className="flex justify-center gap-4 lg:order-2">
         <button

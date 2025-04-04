@@ -9,8 +9,9 @@ import SortAndFiltersControl from '../components/SortAndFiltersControl';
 
 function Catalog() {
   const { category } = useParams();
-  const [devices, setDevices] = useState([]);
+  const [devices, setDevices] = useState(null);
   const [openSideFilters, setOpenSideFilters] = useState(false);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     const fetchDevices = async () => {
@@ -30,6 +31,7 @@ function Catalog() {
           ...doc.data(),
         }));
         setDevices(deviceList);
+        setCount(deviceList.length);
       } catch (error) {
         console.error('Error fetching devices', error);
       }
@@ -48,11 +50,18 @@ function Catalog() {
         />
 
         <div className="flex w-full flex-col gap-6">
-          <SortAndFiltersControl setOpenSideFilters={setOpenSideFilters} />
+          <SortAndFiltersControl
+            setOpenSideFilters={setOpenSideFilters}
+            count={count}
+          />
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-            {devices.map((device) => (
-              <ProductCard key={device.id} device={device} />
-            ))}
+            {devices ? (
+              devices.map((device) => (
+                <ProductCard key={device.id} device={device} />
+              ))
+            ) : (
+              <div>Loading...</div>
+            )}
           </div>
         </div>
       </section>

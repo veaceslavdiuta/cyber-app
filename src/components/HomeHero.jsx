@@ -8,7 +8,7 @@ function HomeHero() {
               Pro.Beyond.
             </h5>
             <h1 className="text-center font-sfPro text-7xl font-[200] leading-[100%] tracking-[-0.72px] text-white lg:text-start lg:text-8xl lg:tracking-[-0.96px]">
-              IPhone 14 <span className="font-bold">Pro</span>
+              IPhone 16 <span className="font-bold">Pro</span>
             </h1>
             <p className="text-center font-sfPro text-lg font-medium leading-6 text-[#909090]">
               Created to change everything for the better.For everyone

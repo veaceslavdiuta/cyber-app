@@ -23,7 +23,11 @@ function ProductCard(props) {
         to={`/catalog/${props.device?.category}/${props.device?.model}`}
         className="flex flex-auto flex-col items-center justify-between gap-4"
       >
-        <img src="/src/assets/Iphone 14 pro 1.png" alt="" />
+        <img
+          className="w-2/3"
+          src={`/src/assets/devices/${props.device?.category}/${props.device?.images[0]}`}
+          alt={props.device?.model}
+        />
         <h4 className="line-clamp-2 text-center font-sfPro text-base font-medium leading-6 text-black sm:text-lg">
           {props.device?.model}
         </h4>

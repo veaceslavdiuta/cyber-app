@@ -7,7 +7,7 @@ function CategoryNav({ isOpen }) {
     { name: 'Computers', path: '/catalog/computers', icon: 'Computers.svg' },
     {
       name: 'Smart Watches',
-      path: '/catalog/smart-watches',
+      path: '/catalog/smartwatches',
       icon: 'Gaming.svg',
     },
     { name: 'Cameras', path: '/catalog/cameras', icon: 'Cameras.svg' },

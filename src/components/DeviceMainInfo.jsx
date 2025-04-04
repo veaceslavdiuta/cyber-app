@@ -5,39 +5,51 @@ function DeviceMainInfo(props) {
   const mainFeatures = [
     {
       name: 'Screen size',
-      featureProperty: props.device.screen['Screen-diagonal'],
+      featureProperty: props.device.screen,
       icon: 'Detail1.png',
     },
     {
       name: 'CPU',
-      featureProperty: props.device.CPU['Chipset'],
+      featureProperty:
+        props.device.category == 'computers'
+          ? props.device.processor
+          : props.device.CPU,
       icon: 'Detail2.png',
     },
     {
       name: 'Number of Cores',
-      featureProperty: props.device.CPU['Number of cores'],
+      featureProperty:
+        props.device.category == 'computers'
+          ? props.device.cores
+          : props.device.numberOfCores,
       icon: 'Detail3.png',
     },
     {
       name: 'Main camera',
-      featureProperty: props.device.Cameras['Rear Camera - Main'],
+      featureProperty:
+        props.device.category == 'cameras'
+          ? props.device.video
+          : props.device.mainCamera,
       icon: 'Detail4.png',
     },
     {
       name: 'Front-camera',
-      featureProperty: props.device.Cameras['Front Camera'],
+      featureProperty:
+        props.device.category == 'cameras'
+          ? props.device.sensor
+          : props.device.frontCamera,
       icon: 'Detail5.png',
     },
     {
       name: 'Battery capacity',
-      featureProperty: props.device.Battery['Capacity'],
+      featureProperty: props.device.battery,
       icon: 'Detail6.png',
     },
   ];
 
   return (
     <section className="container mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-10 px-4 py-10 lg:flex-row lg:py-28">
-      <DeviceImages />
+      <DeviceImages device={props.device} />
 
       <div className="flex flex-col gap-4 lg:w-1/2">
         <div className="flex flex-col gap-6">
@@ -61,7 +73,7 @@ function DeviceMainInfo(props) {
               <button className="h-8 w-8 rounded-full bg-[#E8E8E8] outline-2 outline-offset-2 hover:outline"></button>
             </div>
           </div>
-          <div className="flex gap-2 sm:gap-4">
+          {/* <div className="flex gap-2 sm:gap-4">
             {props.device.storage.map((item, index) => (
               <button
                 key={index}
@@ -70,7 +82,7 @@ function DeviceMainInfo(props) {
                 {item}
               </button>
             ))}
-          </div>
+          </div> */}
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
             {mainFeatures.map((feature) => (
               <div
