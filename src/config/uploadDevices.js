@@ -1,6 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { database } from "./firebase";
-import { devices } from "./devices";
+
+const devices = [];
 
 const uploadDevices = async () => {
   try {

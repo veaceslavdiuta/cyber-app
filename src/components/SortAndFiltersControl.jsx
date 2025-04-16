@@ -1,7 +1,17 @@
 import { useState } from 'react';
 
-function SortAndFiltersControl({ setOpenSideFilters, count }) {
+function SortAndFiltersControl({
+  setOpenSideFilters,
+  count,
+  sortValue,
+  setSortValue,
+}) {
   const [openSort, setOpenSort] = useState(false);
+
+  const handleSortValue = (value) => {
+    setSortValue(value);
+    setOpenSort(!openSort);
+  };
 
   return (
     <div className="flex flex-col justify-between gap-6 lg:flex-row">
@@ -28,12 +38,12 @@ function SortAndFiltersControl({ setOpenSideFilters, count }) {
             />
           </svg>
         </button>
-        <ul className="flex w-full max-w-64 flex-col justify-between rounded-lg border border-[#D4D4D4] bg-white px-4 py-2 lg:w-64">
+        <ul className="relative flex w-full max-w-64 flex-col justify-between rounded-lg border border-[#D4D4D4] bg-white px-4 py-2 lg:w-64">
           <button
             onClick={() => setOpenSort(!openSort)}
             className="flex w-full justify-between font-sfPro text-sm font-medium leading-6 text-black"
           >
-            Sort by
+            {sortValue || 'Sort by'}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -45,14 +55,20 @@ function SortAndFiltersControl({ setOpenSideFilters, count }) {
             </svg>
           </button>
           {openSort && (
-            <>
-              <li className="font-sfPro text-sm font-medium leading-6 text-black hover:bg-[#D4D4D4]">
+            <div className="absolute right-0 top-10 w-full rounded-lg border border-[#D4D4D4] bg-white lg:w-64">
+              <li
+                onClick={() => handleSortValue('Low To High')}
+                className="cursor-pointer px-4 py-1 font-sfPro text-sm font-medium leading-6 text-black hover:bg-[#D4D4D4]"
+              >
                 Price: Low to High
               </li>
-              <li className="font-sfPro text-sm font-medium leading-6 text-black hover:bg-[#D4D4D4]">
+              <li
+                onClick={() => handleSortValue('High To Low')}
+                className="cursor-pointer px-4 py-1 font-sfPro text-sm font-medium leading-6 text-black hover:bg-[#D4D4D4]"
+              >
                 Price: High to Low
               </li>
-            </>
+            </div>
           )}
         </ul>
       </div>

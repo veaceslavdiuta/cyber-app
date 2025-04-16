@@ -20,7 +20,7 @@ function ProductCard(props) {
         />
       </svg>
       <Link
-        to={`/catalog/${props.device?.category}/${props.device?.model}`}
+        to={`/${props.device?.category}/${props.device?.model}`}
         className="flex flex-auto flex-col items-center justify-between gap-4"
       >
         <img

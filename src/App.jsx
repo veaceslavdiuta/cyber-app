@@ -13,7 +13,6 @@ import MyAccount from './routes/MyAccount';
 import CheckoutFirstStep from './routes/CheckoutFirstStep';
 import CheckoutSecondStep from './routes/CheckoutSecondStep';
 import CheckoutThirdStep from './routes/CheckoutThirdStep';
-// import './config/uploadDevices';
 
 const App = () => {
   return (
@@ -25,10 +24,8 @@ const App = () => {
         <Route path="/about" Component={About} />
         <Route path="/contact-us" Component={ContactUs} />
         <Route path="/blog" Component={Blog} />
-        <Route path="/catalog" Component={Catalog}>
-          <Route path=":category" Component={Catalog} />
-        </Route>
-        <Route path="/catalog/:category/:name" Component={ProductDetails} />
+        <Route path="/:category" Component={Catalog} />
+        <Route path="/:category/:name" Component={ProductDetails} />
         <Route path="/favorite" Component={Favorite} />
         <Route path="/cart" Component={Cart} />
         <Route path="/my-account" Component={MyAccount} />

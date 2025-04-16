@@ -1,41 +1,36 @@
 import { useState } from 'react';
+import { getFilterByCategory } from '../config/filterConfig';
 
-function Filters({ openSideFilters, setOpenSideFilters }) {
-  const filters = [
-    { filterName: 'Price' },
-    {
-      filterName: 'Brand',
-      options: [
-        'Apple',
-        'Samsung',
-        'Xiaomi',
-        'Google',
-        'Huawei',
-        'Poco',
-        'Realme',
-      ],
-    },
-    {
-      filterName: 'Built-in memory',
-      options: ['16GB', '32GB', '64GB', '128GB', '256GB', '512GB', '1TB'],
-    },
-    {
-      filterName: 'Screen diagonal',
-      options: ['4.7"', '5.5"', '6.1"', '6.5"', '6.8"', '7.2"+'],
-    },
-    {
-      filterName: 'Battery capacity',
-      options: [
-        '< 3000mAh',
-        '3000-4000mAh',
-        '4000-5000mAh',
-        '5000-6000mAh',
-        '6000mAh+',
-      ],
-    },
-  ];
-
+function Filters({
+  openSideFilters,
+  setOpenSideFilters,
+  category,
+  allDevices,
+  selectedFilters,
+  setSelectedFilters,
+}) {
   const [openFilters, setOpenFilters] = useState({});
+  const filters = getFilterByCategory(category, allDevices);
+
+  const handleCheckboxChange = (e, filterName) => {
+    const { value, checked } = e.target;
+
+    setSelectedFilters((prevFilters) => {
+      const prevValues = prevFilters[filterName] || [];
+
+      if (checked) {
+        return {
+          ...prevFilters,
+          [filterName]: [...prevValues, value],
+        };
+      } else {
+        return {
+          ...prevFilters,
+          [filterName]: prevValues.filter((val) => val !== value),
+        };
+      }
+    });
+  };
 
   const toggleFilter = (filter) => {
     setOpenFilters((prev) => ({
@@ -100,6 +95,15 @@ function Filters({ openSideFilters, setOpenSideFilters }) {
                       className="w-full rounded-sm border p-2 font-sfPro text-sm font-normal leading-6 text-black outline-none"
                       type="number"
                       name="from"
+                      value={selectedFilters.priceFrom || ''}
+                      onChange={(e) =>
+                        setSelectedFilters((prev) => ({
+                          ...prev,
+                          priceFrom: e.target.value
+                            ? parseFloat(e.target.value)
+                            : 0,
+                        }))
+                      }
                     />
                   </div>
                   <div className="flex flex-col gap-2">
@@ -113,6 +117,15 @@ function Filters({ openSideFilters, setOpenSideFilters }) {
                       className="w-full rounded-sm border p-2 font-sfPro text-sm font-normal leading-6 text-black outline-none"
                       type="number"
                       name="to"
+                      value={selectedFilters.priceTo || ''}
+                      onChange={(e) =>
+                        setSelectedFilters((prev) => ({
+                          ...prev,
+                          priceTo: e.target.value
+                            ? parseFloat(e.target.value)
+                            : Infinity,
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -125,6 +138,14 @@ function Filters({ openSideFilters, setOpenSideFilters }) {
                     <input
                       type="checkbox"
                       className="cursor-pointer accent-black"
+                      checked={
+                        selectedFilters[filter.filterName]?.includes(item) ||
+                        false
+                      }
+                      value={item}
+                      onChange={(e) =>
+                        handleCheckboxChange(e, filter.filterName)
+                      }
                     />
                     {item}
                   </label>
