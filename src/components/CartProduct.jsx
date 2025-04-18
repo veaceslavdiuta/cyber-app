@@ -1,18 +1,27 @@
-function CartProduct() {
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
+
+function CartProduct(props) {
+  const { removeProductFromCart } = useContext(CartContext);
+
   return (
     <>
       <div className="flex w-full items-center gap-4 py-4">
-        <img src="/src/assets/image 57.png" alt="" />
+        <img
+          className="w-24"
+          src={`/src/assets/devices/${props.product.images[0]}`}
+          alt={props.product.model}
+        />
         <div className="flex w-full flex-col items-center justify-between gap-2 sm:flex-row">
           <div className="flex w-full flex-col gap-2">
             <h4 className="font-sfPro text-base font-semibold leading-6">
-              Apple Iphone 15 Pro Max
+              {props.product.model}
             </h4>
             <p className="font-sfPro text-base font-semibold leading-6">
-              128GB <span>Deep Purple</span>
+              {props.product.storage[0]} <span></span>
             </p>
             <p className="font-sfPro text-sm font-normal leading-6">
-              #25139526913984
+              {props.product.id}
             </p>
           </div>
           <div className="flex w-full justify-between gap-2">
@@ -34,7 +43,7 @@ function CartProduct() {
                 </svg>
               </button>
               <p className="rounded border-[0.5px] border-[#D9D9D9] px-4 py-2 font-sfPro text-base font-medium leading-4">
-                1
+                {props.product.quantity}
               </p>
               <button>
                 <svg
@@ -61,9 +70,11 @@ function CartProduct() {
             </div>
 
             <p className="font-sfPro text-xl font-medium leading-8 tracking-[0.6px]">
-              $1399
+              ${props.product.price}
             </p>
-            <button>
+            <button
+              onClick={() => removeProductFromCart(props.product.firestoreId)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

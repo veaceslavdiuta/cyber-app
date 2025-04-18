@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../contexts/CartContext';
 
 function ProductCard(props) {
+  const { addProductToShoppingCart } = useContext(CartContext);
+
   return (
     <div className="flex flex-col justify-start gap-2 rounded-lg bg-[#F6F6F6] px-4 py-6 md:gap-4">
       <svg
@@ -25,7 +29,7 @@ function ProductCard(props) {
       >
         <img
           className="w-2/3"
-          src={`/src/assets/devices/${props.device?.category}/${props.device?.images[0]}`}
+          src={`/src/assets/devices/${props.device?.images[0]}`}
           alt={props.device?.model}
         />
         <h4 className="line-clamp-2 text-center font-sfPro text-base font-medium leading-6 text-black sm:text-lg">
@@ -35,7 +39,10 @@ function ProductCard(props) {
           ${props.device?.price}
         </p>
       </Link>
-      <button className="w-full rounded-lg bg-black py-4 font-sfPro text-sm font-medium leading-6 text-white hover:bg-[#353535]">
+      <button
+        onClick={() => addProductToShoppingCart(props.device)}
+        className="w-full rounded-lg bg-black py-4 font-sfPro text-sm font-medium leading-6 text-white hover:bg-[#353535]"
+      >
         Buy Now
       </button>
     </div>

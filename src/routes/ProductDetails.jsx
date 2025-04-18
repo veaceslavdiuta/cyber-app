@@ -27,7 +27,6 @@ function ProductDetails() {
 
         if (deviceData.length > 0) {
           setDevice(deviceData[0]);
-          console.log(deviceData);
         } else {
           console.log('No device found with the given name');
         }

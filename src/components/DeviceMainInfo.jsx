@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import DeviceImages from './DeviceImages';
 import ServiceInfo from './ServiceInfo';
+import { CartContext } from '../contexts/CartContext';
 
 function DeviceMainInfo(props) {
+  const { addProductToShoppingCart } = useContext(CartContext);
+
   const mainFeatures = [
     {
       name: 'Screen size',
@@ -109,7 +113,10 @@ function DeviceMainInfo(props) {
           <button className="rounded-md border border-black py-4 font-sfPro text-base font-medium leading-6 hover:bg-[#F4F4F4] md:w-1/2">
             Add to Wishlist
           </button>
-          <button className="rounded-md border border-black bg-black py-4 font-sfPro text-base font-medium leading-6 text-white hover:opacity-60 md:w-1/2">
+          <button
+            onClick={() => addProductToShoppingCart(props.device)}
+            className="rounded-md border border-black bg-black py-4 font-sfPro text-base font-medium leading-6 text-white hover:opacity-60 md:w-1/2"
+          >
             Add to card
           </button>
         </div>
