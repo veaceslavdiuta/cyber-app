@@ -20,7 +20,7 @@ export function CartProvider({ children }) {
       const productsQuery = collection(database, 'shoppingCart');
       const snapshot = await getDocs(productsQuery);
       const products = snapshot.docs.map((doc) => ({
-        firestoreId: doc.id, // The Firestore document ID
+        firestoreId: doc.id,
         ...doc.data(),
       }));
       setCartProducts(products);

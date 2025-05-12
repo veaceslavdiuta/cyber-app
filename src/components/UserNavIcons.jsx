@@ -1,10 +1,12 @@
+import { CiHeart } from 'react-icons/ci';
+import { IoMdHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
 function UserNavIcons() {
   return (
     <div className="flex gap-6 self-center">
       <Link to="/favorite">
-        <svg
+        {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
           height="32"
@@ -18,7 +20,9 @@ function UserNavIcons() {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-        </svg>
+        </svg> */}
+        {/* <CiHeart className="text-3xl" /> */}
+        <IoMdHeartEmpty className="text-3xl" />
       </Link>
       <Link to="/cart">
         <svg
