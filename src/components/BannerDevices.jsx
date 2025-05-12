@@ -10,6 +10,7 @@ function BannerDevices() {
                 media="(min-width: 1024px)"
               />
               <img
+                loading="lazy"
                 src="/src/assets/PlayStationSmall.png"
                 alt="PlayStationSmall"
               />
@@ -31,6 +32,7 @@ function BannerDevices() {
                 media="(min-width: 1024px)"
               />
               <img
+                loading="lazy"
                 src="/src/assets/AppleAirpodsSmall.png"
                 alt="AppleAirpodsSmall"
               />
@@ -52,6 +54,7 @@ function BannerDevices() {
               />
 
               <img
+                loading="lazy"
                 src="/src/assets/AppleVisionProSmall.png"
                 alt="AppleVisionSmall"
               />

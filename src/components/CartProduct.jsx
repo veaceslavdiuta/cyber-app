@@ -2,7 +2,11 @@ import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
 
 function CartProduct(props) {
-  const { removeProductFromCart } = useContext(CartContext);
+  const {
+    removeProductFromCart,
+    addProductToShoppingCart,
+    decreaseProductQuantity,
+  } = useContext(CartContext);
 
   return (
     <>
@@ -18,7 +22,7 @@ function CartProduct(props) {
               {props.product.model}
             </h4>
             <p className="font-sfPro text-base font-semibold leading-6">
-              {props.product.storage[0]} <span></span>
+              {/* {props.product} <span></span> */}
             </p>
             <p className="font-sfPro text-sm font-normal leading-6">
               {props.product.id}
@@ -26,7 +30,7 @@ function CartProduct(props) {
           </div>
           <div className="flex w-full justify-between gap-2">
             <div className="flex items-center gap-2">
-              <button>
+              <button onClick={() => decreaseProductQuantity(props.product)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -45,7 +49,7 @@ function CartProduct(props) {
               <p className="rounded border-[0.5px] border-[#D9D9D9] px-4 py-2 font-sfPro text-base font-medium leading-4">
                 {props.product.quantity}
               </p>
-              <button>
+              <button onClick={() => addProductToShoppingCart(props.product)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

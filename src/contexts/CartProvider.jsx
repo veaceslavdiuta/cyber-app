@@ -14,10 +14,8 @@ import { database } from '../config/firebase';
 
 export function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   const fetchCartProducts = async () => {
-    setIsLoading(true);
     try {
       const productsQuery = collection(database, 'shoppingCart');
       const snapshot = await getDocs(productsQuery);
@@ -28,8 +26,6 @@ export function CartProvider({ children }) {
       setCartProducts(products);
     } catch (error) {
       console.error('Error fetching cart:', error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -40,9 +36,7 @@ export function CartProvider({ children }) {
   const addProductToShoppingCart = async (product) => {
     if (!product.id) return;
 
-    setIsLoading(true);
     try {
-      // Check if product already exists in cart
       const cartQuery = query(
         collection(database, 'shoppingCart'),
         where('productId', '==', product.id)
@@ -50,31 +44,26 @@ export function CartProvider({ children }) {
       const querySnapshot = await getDocs(cartQuery);
 
       if (!querySnapshot.empty) {
-        // Product exists - update quantity
         const existingDoc = querySnapshot.docs[0];
         await updateDoc(existingDoc.ref, {
           quantity: (existingDoc.data().quantity || 0) + 1,
         });
       } else {
-        // Product doesn't exist - add new
         await addDoc(collection(database, 'shoppingCart'), {
           productId: product.id,
           ...product,
           quantity: 1,
         });
       }
-      await fetchCartProducts(); // Refresh cart
+      await fetchCartProducts();
     } catch (error) {
       console.error('Error adding to cart:', error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const removeProductFromCart = async (firestoreId) => {
     if (!firestoreId) return;
 
-    setIsLoading(true);
     try {
       // Delete from Firestore
       await deleteDoc(doc(database, 'shoppingCart', firestoreId));
@@ -87,38 +76,52 @@ export function CartProvider({ children }) {
       console.error('Error removing from cart:', error);
       // If Firestore fails, refresh from server
       await fetchCartProducts();
-    } finally {
-      setIsLoading(false);
     }
   };
-  const updateProductQuantity = async (firestoreId, newQuantity) => {
-    if (newQuantity < 1) {
-      await removeProductFromCart(firestoreId);
-      return;
-    }
 
-    setIsLoading(true);
+  const decreaseProductQuantity = async (product) => {
+    if (!product.id) return;
+
     try {
-      await updateDoc(doc(database, 'shoppingCart', firestoreId), {
-        quantity: newQuantity,
+      const cartQuery = query(
+        collection(database, 'shoppingCart'),
+        where('productId', '==', product.id)
+      );
+
+      const querySnapshot = await getDocs(cartQuery);
+      const existingDoc = querySnapshot.docs[0];
+      const productQuantity = existingDoc.data().quantity;
+
+      if (productQuantity === 1) {
+        return false;
+      }
+
+      await updateDoc(existingDoc.ref, {
+        quantity: productQuantity - 1,
       });
-      await fetchCartProducts(); // Refresh cart
+
+      await fetchCartProducts();
     } catch (error) {
-      console.error('Error updating quantity:', error);
-    } finally {
-      setIsLoading(false);
+      console.log(error);
     }
   };
+
+  const subTotal = cartProducts.reduce(
+    (acc, item) => (acc += item.price * item.quantity),
+    0
+  );
+
+  const total = subTotal + 50 + 29;
 
   return (
     <CartContext.Provider
       value={{
         cartProducts,
-        isLoading,
         addProductToShoppingCart,
         removeProductFromCart,
-        updateProductQuantity,
-        refreshCart: fetchCartProducts,
+        decreaseProductQuantity,
+        subTotal,
+        total,
       }}
     >
       {children}
