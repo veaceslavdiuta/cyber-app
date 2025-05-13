@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { FavoriteContext } from '../contexts/FavoriteContext';
 import ProductCard from '../components/ProductCard';
+import FavoriteProduct from '../components/FavoriteProduct';
 
 function Favorite() {
   const { favoriteProducts } = useContext(FavoriteContext);
@@ -12,7 +13,7 @@ function Favorite() {
         </h3>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {favoriteProducts.map((device) => (
-            <ProductCard device={device} key={device.firestoreId} />
+            <FavoriteProduct device={device} key={device.firestoreId} />
           ))}
         </div>
       </section>

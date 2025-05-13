@@ -2,9 +2,11 @@ import { useContext } from 'react';
 import DeviceImages from './DeviceImages';
 import ServiceInfo from './ServiceInfo';
 import { CartContext } from '../contexts/CartContext';
+import { FavoriteContext } from '../contexts/FavoriteContext';
 
 function DeviceMainInfo(props) {
   const { addProductToShoppingCart } = useContext(CartContext);
+  const { addProductToFavorite } = useContext(FavoriteContext);
 
   const mainFeatures = [
     {
@@ -110,7 +112,10 @@ function DeviceMainInfo(props) {
           </p>
         </div>
         <div className="flex w-full flex-col gap-4 py-4 md:flex-row">
-          <button className="rounded-md border border-black py-4 font-sfPro text-base font-medium leading-6 hover:bg-[#F4F4F4] md:w-1/2">
+          <button
+            onClick={() => addProductToFavorite(props.device)}
+            className="rounded-md border border-black py-4 font-sfPro text-base font-medium leading-6 hover:bg-[#F4F4F4] md:w-1/2"
+          >
             Add to Wishlist
           </button>
           <button

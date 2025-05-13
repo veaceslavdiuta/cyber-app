@@ -11,7 +11,7 @@ function DeviceImages(props) {
             key={index}
             onClick={() => setSelectedImage(image)}
             className={`w-[75px] cursor-pointer ${selectedImage === image ? 'opacity-100' : 'opacity-20'}`}
-            src={`/src/assets/devices/${props.device.category}/${image}`}
+            src={`/src/assets/devices/${image}`}
             alt={image}
           />
         ))}
@@ -19,7 +19,7 @@ function DeviceImages(props) {
       {selectedImage && (
         <img
           className="w-3/4 xl:order-2"
-          src={`/src/assets/devices/${props.device.category}/${selectedImage}`}
+          src={`/src/assets/devices/${selectedImage}`}
           alt={selectedImage}
         />
       )}

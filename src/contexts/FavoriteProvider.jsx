@@ -43,10 +43,7 @@ export function FavoriteProvider({ children }) {
       if (isAlreadyFavorite) {
         return;
       } else {
-        await addDoc(collection(database, 'favorite'), {
-          ...product,
-          favorite: true,
-        });
+        await addDoc(collection(database, 'favorite'), product);
       }
 
       await fetchFavoriteProducts();
