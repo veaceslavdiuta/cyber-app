@@ -8,6 +8,11 @@ function FavoriteProduct(props) {
   const { addProductToShoppingCart } = useContext(CartContext);
   const { deleteProductFromFavorite } = useContext(FavoriteContext);
 
+  const addProductToCart = (device) => {
+    addProductToShoppingCart(device);
+    deleteProductFromFavorite(device.firestoreId);
+  };
+
   return (
     <div className="flex flex-col justify-start gap-2 rounded-lg bg-[#F6F6F6] px-4 py-6 md:gap-4">
       <IoMdClose
@@ -31,7 +36,7 @@ function FavoriteProduct(props) {
         </p>
       </Link>
       <button
-        onClick={() => addProductToShoppingCart(props.device)}
+        onClick={() => addProductToCart(props.device)}
         className="w-full rounded-lg bg-black py-4 font-sfPro text-sm font-medium leading-6 text-white hover:bg-[#353535]"
       >
         Buy Now
