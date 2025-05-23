@@ -12,6 +12,30 @@ export const fetchDevices = async (category) => {
   }
 };
 
+export const fetchDiscountDevices = async () => {
+  try {
+    const devicesQuery = query(collection(database, 'devices'));
+    const snapshot = await getDocs(devicesQuery);
+    const allDevices = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return allDevices.filter((device) => device.discount);
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
+export const fetchNewArrivalsDevices = async () => {
+  try {
+    const devicesQuery = query(collection(database, 'devices'));
+    const snapshot = await getDocs(devicesQuery);
+    const allDevices = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const lastDevices = allDevices.slice(-8);
+    return lastDevices;
+  } catch (error) {
+    console.error('Error fetching devices:', error);
+    return [];
+  }
+};
+
 // Function to filter and sort devices based on selected filters, category, and sort value
 export const getDevicesByFilters = (devices, selectedFilters, category, sortValue) => {
   // Step 1: Filter devices based on selectedFilters

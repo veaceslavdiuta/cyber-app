@@ -3,16 +3,16 @@ import React from 'react';
 
 function CategoryNav({ isOpen }) {
   const categories = [
-    { name: 'Phones', path: '/smartphones', icon: 'Phones.svg' },
-    { name: 'Computers', path: '/computers', icon: 'Computers.svg' },
+    { name: 'Phones', path: '/smartphones', icon: 'Phones.webp' },
+    { name: 'Computers', path: '/computers', icon: 'Computers.webp' },
     {
       name: 'Smart Watches',
       path: '/smartwatches',
-      icon: 'Gaming.svg',
+      icon: 'Gaming.webp',
     },
-    { name: 'Cameras', path: '/cameras', icon: 'Cameras.svg' },
-    { name: 'Headphones', path: '/headphones', icon: 'Headphones.svg' },
-    { name: 'Gaming', path: '/gaming', icon: 'Gaming.svg' },
+    { name: 'Cameras', path: '/cameras', icon: 'Cameras.webp' },
+    { name: 'Headphones', path: '/headphones', icon: 'Headphones.webp' },
+    { name: 'Gaming', path: '/gaming', icon: 'Gaming.webp' },
   ];
 
   return (

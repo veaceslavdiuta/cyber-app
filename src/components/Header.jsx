@@ -14,7 +14,7 @@ function Header() {
     <header className="w-full">
       <div className="container mx-auto flex w-full max-w-screen-xl items-center justify-between gap-7 px-4 py-6 lg:py-4">
         <Link to={'/'}>
-          <img src="/src/assets/Logo.png" alt="Logo" />
+          <img src="/src/assets/Logo.webp" alt="Logo" />
         </Link>
         <div
           className={`absolute left-0 top-[88px] z-20 w-full flex-col items-center justify-between gap-9 lg:flex-row lg:gap-7 ${isOpen ? 'flex' : 'hidden'} bg-white pt-0 lg:static lg:flex lg:px-0 lg:py-0`}

@@ -11,7 +11,7 @@ function BannerDevices() {
               />
               <img
                 loading="lazy"
-                src="/src/assets/PlayStationSmall.png"
+                src="/src/assets/PlayStationSmall.webp"
                 alt="PlayStationSmall"
               />
             </picture>
@@ -33,7 +33,7 @@ function BannerDevices() {
               />
               <img
                 loading="lazy"
-                src="/src/assets/AppleAirpodsSmall.png"
+                src="/src/assets/AppleAirpodsSmall.webp"
                 alt="AppleAirpodsSmall"
               />
             </picture>
@@ -55,7 +55,7 @@ function BannerDevices() {
 
               <img
                 loading="lazy"
-                src="/src/assets/AppleVisionProSmall.png"
+                src="/src/assets/AppleVisionProSmall.webp"
                 alt="AppleVisionSmall"
               />
             </picture>
@@ -75,7 +75,7 @@ function BannerDevices() {
               srcSet="/src/assets/MacBookPro.png"
               media="(min-width: 1024px)"
             />
-            <img src="/src/assets/MacBookProSmall.png" alt="MacBookProSmall" />
+            <img src="/src/assets/MacBookProSmall.webp" alt="MacBookProSmall" />
           </picture>
           <div className="flex flex-col items-center gap-2 lg:order-1 lg:items-start lg:gap-4 lg:pl-14">
             <h5 className="font-sfPro text-4xl font-light leading-tight text-black lg:text-[64px] lg:font-semibold">

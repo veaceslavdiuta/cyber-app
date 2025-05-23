@@ -29,8 +29,12 @@ function ProductCard(props) {
         <h4 className="line-clamp-2 text-center font-sfPro text-base font-medium leading-6 text-black sm:text-lg">
           {props.device?.model}
         </h4>
-        <p className="font-sfPro text-2xl font-semibold leading-6 tracking-[0.72px]">
-          ${props.device?.price}
+        <p className="flex flex-col font-sfPro text-2xl font-semibold leading-6 tracking-[0.72px]">
+          {props.device?.discount ? (
+            <span>${props.device?.discount}</span>
+          ) : (
+            <span>${props.device?.price}</span>
+          )}
         </p>
       </Link>
       <button

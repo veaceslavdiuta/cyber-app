@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function HomeHero() {
   return (
     <section className="w-full bg-gradient-to-r from-[#211C24] to-[#211C24]">
@@ -11,14 +13,17 @@ function HomeHero() {
               IPhone 16 <span className="font-bold">Pro</span>
             </h1>
             <p className="text-center font-sfPro text-lg font-medium leading-6 text-[#909090]">
-              Created to change everything for the better.For everyone
+              Created to change everything for the better. For everyone
             </p>
           </div>
-          <button className="rounded-md border border-white px-14 py-4 font-sfPro text-base font-medium leading-6 text-white hover:bg-white hover:text-black">
+          <Link
+            to="/smartphones"
+            className="rounded-md border border-white px-14 py-4 font-sfPro text-base font-medium leading-6 text-white hover:bg-white hover:text-black"
+          >
             Shop Now
-          </button>
+          </Link>
         </div>
-        <img src="/src/assets/IphoneImage .png" alt="IphoneImage" />
+        <img src="/src/assets/IphoneImage.webp" alt="IphoneImage" />
       </div>
     </section>
   );
